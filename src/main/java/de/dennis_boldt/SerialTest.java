@@ -90,9 +90,15 @@ public class SerialTest implements SerialPortEventListener {
 	 */
 	public synchronized void serialEvent(SerialPortEvent oEvent) {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+
 			try {
-				String inputLine=input.readLine();
-				System.out.println(inputLine);
+				int i = 0;
+				do {
+					i++;
+					byte b = (byte) input.read();
+					System.out.print( String.format("%02X ",b));
+					if(i % 32 == 0) System.out.println();
+				} while (true);
 			} catch (Exception e) {
 				System.err.println(e.toString());
 			}
