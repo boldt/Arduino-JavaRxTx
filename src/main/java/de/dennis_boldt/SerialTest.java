@@ -15,9 +15,9 @@ public class SerialTest implements SerialPortEventListener {
 	SerialPort serialPort;
         /** The port we're normally going to use. */
 	private static final String PORT_NAMES[] = {
-			"/dev/tty.usbserial-A9007UX1", // Mac OS X
-			"/dev/ttyUSB0", // Linux
-			"COM3", // Windows
+		"/dev/ttyS100",
+		"/dev/ttyS101",
+		"/dev/ttyS102",
 	};
 	/**
 	* A BufferedReader which will be fed by a InputStreamReader
