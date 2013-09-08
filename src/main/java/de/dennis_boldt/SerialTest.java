@@ -63,7 +63,7 @@ public class SerialTest implements SerialPortEventListener {
 					SerialPort.PARITY_NONE);
 
 			// open the streams
-			input = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
+			input = new BufferedReader(new InputStreamReader(serialPort.getInputStream(),"ISO-8859-1"), 1024);
 			output = serialPort.getOutputStream();
 
 			// add event listeners
@@ -94,10 +94,9 @@ public class SerialTest implements SerialPortEventListener {
 			try {
 				int i = 0;
 				do {
-					i++;
 					byte b = (byte) input.read();
+					if(i++ % 32 == 0) System.out.println();
 					System.out.print( String.format("%02X ",b));
-					if(i % 32 == 0) System.out.println();
 				} while (true);
 			} catch (Exception e) {
 				System.err.println(e.toString());
